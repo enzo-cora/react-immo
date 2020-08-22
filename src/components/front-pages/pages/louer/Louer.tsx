@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Louer = (props:any)=> {
-    console.log(props)
+const Louer = ()=> {
     return (
         <p>Louer</p>
     );
