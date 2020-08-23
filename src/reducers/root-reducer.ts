@@ -2,7 +2,7 @@ import {combineReducers} from "redux";
 import {immosReducer} from "./immos-reducer";
 
 const rootReducer = combineReducers({
-    immobilier: immosReducer,
+    immobilier : immosReducer,
 })
 
 

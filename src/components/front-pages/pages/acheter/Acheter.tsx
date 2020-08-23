@@ -6,35 +6,32 @@ interface props {
     salut : string,
     getAllImmos(),
     lesImmos : string,
-    leState
-}
-
-class Acheter extends React.Component<props>{
-
-    constructor(props) {
-        super(props);
-        this.fetchAllImmo = this.fetchAllImmo.bind(this)
-    }
-
-    fetchAllImmo (){
-        this.props.getAllImmos()
-    }
-
-    render() {
-        return (
-            <div>
-                <p>rrrtttyyy</p>
-                <button onClick={this.fetchAllImmo}>Les données</button>
-                <code>{JSON.stringify(this.props.leState )}</code>
-            </div>
-        )
-    }
+    state,
+    immobilier
 }
 
 
-//PARTIE CONTAINER
+
+const Acheter = (props : props)=> {
+
+    const fetchAllImmo = () => {
+        props.getAllImmos()
+    }
+
+    return (
+        <section>
+            <p>Slfgerger</p>
+            <button onClick={fetchAllImmo}>Les données</button>
+            <code>{JSON.stringify(props.immobilier )}</code>
+
+        </section>
+    );
+}
+
+//--------------PARTIE CONTAINER---------------------
+
 const mapStateToProps = state => ({
-    leState : state
+    ...state
 })
 
 const mapDispatchToProps = {
