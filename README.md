@@ -112,10 +112,12 @@
 ### POST - Login : 
 > /api1/authentification/login
 * body request :
+```javascript
 {
   mail : string,
   mdp : string,
 }
+```
 
 ### GET - getUserInformations : ( Need to be connected )
 > /api1/authentification/user/:id
@@ -124,38 +126,25 @@
 
 ## ---Immobilier---
 ### OBJECT MODEL RECEIVED FROM API: 
-```JSON 
+```json 
 {
-   "type":"string",
-   "status":"string",
-   "title":"string",
-   "description":"string",
-   "surface":"number",
-   "price":"number",
-   "bedroom":"number",
-   "bathroom":"number",
-   "living_room":"number",
-   "kitchen":"number",
-   "rooms":"number",
-   "garage":"boolean",
-   "terrace":"boolean",
-   "address" : {
-       "country":"string",
-       "region":"string",
-       "city":"string",
-       "street":"string",
-       "postal_code":"string",
-       "longitude":"number",
-       "latitude":"number",
+   "_id":"string",
+   "mail":"string",
+   "mdp":"string",
+   "sexe":"string",
+   "nom":"string",
+   "prenom":"string",
+   "address":{
+      "pays":"string",
+      "ville":"string",
+      "cp":"number",
+      "rue":"string"
    },
-   "date":"Date",
-   "selleurName?":"string",
-   "selleurFirstName?":"string",
-   "reference?":"string",
-   "offres?":[string],
-   "banniere?":"string",
-   "photos?":[string],
-   "_id?":"string"
+   "phone":"number",
+   "pub1?" :"boolean",
+   "pub2?":"boolean",
+   "isAdmin?":"boolean",
+   "created_date":"Date"
 }
 ```
 
@@ -226,9 +215,9 @@
 La différence des GETs Admin est qu'ils recupèrent + d'informations que les GETs User.
 ## ---Immobilier Admin---
 ### OBJECT MODEL RECEIVED FROM API: 
-```JSON 
+```json 
 {
-   "type":"string",
+   type:"string",
    "status":"string",
    "title":"string",
    "description":"string",
@@ -250,13 +239,13 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
        "longitude":"number",
        "latitude":"number",
    },
-   "date":"Date",
+   Date:Date,
    "selleurName?":"string",
    "selleurFirstName?":"string",
    "reference?":"string",
-   "offres?":[string],
+   "offres?":["string"],
    "banniere?":"string",
-   "photos?":[string],
+   "photos?":["string"],
    "_id?":"string"
 }
 ```
@@ -264,41 +253,41 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
 ### GET - get all immos : 
 > /api1/admin/immo/getByFilter
 
-### POST - get by filters admin  : 
+### POST - get immos by admin filters  : 
 > /api1/admin/immo/getByFilter
 
-### POST - Add one  : 
+### POST - Add one immo  : 
 > /api1/admin/immo/newImmo
 * request type : FormData ( multipart/form-data )
 * body request :
 ```javascript
 {
-   "type":"string",
-   "status":"string",
-   "title":"string",
-   "description":"string",
-   "surface":"number",
-   "price":"number",
-   "bedroom":"number",
-   "bathroom":"number",
-   "living_room":"number",
-   "kitchen":"number",
-   "rooms":"number",
-   "garage":"boolean",
-   "terrace":"boolean",
-   "country":"string",
-   "region":"string",
-   "city":"string",
-   "street":"string",
-   "postal_code":"string",
-   "longitude":"number",
-   "latitude":"number",
+   type: string,
+   status: string,
+   title: string,
+   description: string,
+   surface: number,
+   price: number,
+   bedroom: number,
+   bathroom: number,
+   living_room: number,
+   kitchen: number,
+   rooms: number,
+   garage: boolean,
+   terrace: boolean,
+   country: string,
+   region: string,
+   city: string,
+   street: string,
+   postal_code: string,
+   longitude: number,
+   latitude: number,
 
-   "selleurName?":"string",
-   "selleurFirstName?":"string",
-   "offres?":[string],
-   "img?": file,
-   "imgs?": [file],
+   selleurName?: string,
+   selleurFirstName?: string,
+   offres?:[string],
+   img?: file,
+   imgs?: [file],
 }
 ```
 
@@ -314,33 +303,33 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
 * body request :
 ```javascript
 {
-   "type":"string",
-   "status":"string",
-   "title":"string",
-   "description":"string",
-   "surface":"number",
-   "price":"number",
-   "bedroom":"number",
-   "bathroom":"number",
-   "living_room":"number",
-   "kitchen":"number",
-   "rooms":"number",
-   "garage":"boolean",
-   "terrace":"boolean",
-   "country":"string",
-   "region":"string",
-   "city":"string",
-   "street":"string",
-   "postal_code":"string",
-   "longitude":"number",
-   "latitude":"number",
+   type: string,
+   status: string,
+   title: string,
+   description: string,
+   surface: number,
+   price: number,
+   bedroom: number,
+   bathroom: number,
+   living_room: number,
+   kitchen: number,
+   rooms: number,
+   garage: boolean,
+   terrace: boolean,
+   country: string,
+   region: string,
+   city: string,
+   street: string,
+   postal_code: string,
+   longitude: number,
+   latitude: number,
 
-   "selleurName?":"string",
-   "selleurFirstName?":"string",
-   "reference?":"string",
-   "offres?":[string],
-   "img?": file,
-   "imgs?": [file],
+   selleurName?: string,
+   selleurFirstName?: string,
+   reference?: string,
+   offres?:[string],
+   img?: file,
+   imgs?: [file],
 }
 ```
 
@@ -361,21 +350,21 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
 
 ### GET - get All articles :
 > /api1/admin/articles/getAll
->
+
 ### POST - publish one article :
 > /api1/admin/articles/publish
 * request type : FormData ( multipart/form-data )
 * body request :
 ```javascript
 {
-   "titre":"string",
-   "reference":"string",
-   "contenu":"string",
-   "img": file //banniere
-   "imgs" : [file] //Photo in articles must be
-   "online":"boolean",
-   "categorie":"string",
-   "sousTitre":"string",
+   titre: string,
+   reference: string,
+   contenu: string,
+   img: file //banniere
+   imgs : [file] //Photo in articles must be
+   online: boolean,
+   categorie: string,
+   sousTitre: string,
 }
 ```
 ATTENTION : Les photos contenus dans le corp de l'article doivent être en base64 ET doivent AUSSI être conteu dans un Array<File> avec le fieldName "imgs"
@@ -388,14 +377,14 @@ ATTENTION : Les photos contenus dans le corp de l'article doivent être en base6
 * body request :
 ```javascript
 {
-   "titre":"string",
-      "reference":"string",
-      "contenu":"string",
-      "img": file //banniere
-      "imgs" : [file] //Photo in articles must be
-      "online":"boolean",
-      "categorie":"string",
-      "sousTitre":"string",
+    titre: string,
+    reference: string,
+    contenu: string,
+    img: file //banniere
+    imgs : [file] //Photo in articles must be
+    online: boolean,
+    categorie: string,
+    sousTitre: string,
 }
 ```
 ATTENTION : Les photos contenus dans le corp de l'article doivent être en base64 ET doivent AUSSI être conteu dans un Array<File> avec le fieldName "imgs"
@@ -405,7 +394,7 @@ ATTENTION : Les photos contenus dans le corp de l'article doivent être en base6
 * reference : 'article_reference'
 
 ## ---Agence Admin ---
-### POST - modifyAgenceInfos :
+### POST - modify Agence Infos :
 > /api1/admin/agence/update
 
 * body request : 
