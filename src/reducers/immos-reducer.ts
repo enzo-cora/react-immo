@@ -1,18 +1,43 @@
-import {IMMO_GET_ALL_ERROR, IMMO_GET_ALL_SUCCESS} from "../constants/constants-immo";
+import {
+    IMMO_GET_ALL_ERROR,
+    IMMO_GET_ALL_SUCCESS, IMMO_GET_BY_FILTERS_ERROR,
+    IMMO_GET_BY_FILTERS_SUCCESS, IMMO_GET_ONE_ERROR, IMMO_GET_ONE_SUCCESS, RESET_IN_IMMO,
+} from "../constants/constants-immo";
 
-const initialState = {
-    maison : "voici une maison",
-}
+const reset = {}
 
-export const immosReducer = (state = initialState, action : any) => {
+export const immosReducer = (state = reset, action) => {
     switch (action.type) {
+        //Get All
         case IMMO_GET_ALL_SUCCESS:
-            console.log('caca', action.payload)
-            return action.payload
+            return {...state, immos : action.payload}
         case IMMO_GET_ALL_ERROR:
-            return {}
+            return reset
+        //Get sommes by filters
+        case IMMO_GET_BY_FILTERS_SUCCESS:
+            return {...state, immos : action.payload}
+        case IMMO_GET_BY_FILTERS_ERROR :
+            return reset
+        //get one by id
+        case IMMO_GET_ONE_SUCCESS:
+            return {...state, details : action.payload}
+        case IMMO_GET_ONE_ERROR :
+            return reset
+
+        case RESET_IN_IMMO:
+            if(Array.isArray(action.payload)){
+                action.payload.forEach(elem =>{
+                    state = {...state, [elem] : undefined}
+                })
+                return state
+            }
+            else if(action.payload === '*'){
+                return reset
+            }
+            else{
+                return {...state, [action.payload] : undefined}
+            }
         default :
             return state
     }
 }
-

@@ -17,7 +17,7 @@ import Login from "./components/front-pages/auth/login/Login";
 import Register from "./components/front-pages/auth/register/Register";
 import Profile from "./components/front-pages/auth/profile/Profile";
 
-function App(props:any) {
+function App() {
   return (
       <Router>
           <Switch>
@@ -58,7 +58,7 @@ function App(props:any) {
                               <>
                                   <Route path={`${url}/acheter`} component={Acheter} />
                                   <Route path={`${url}/louer`} component={Louer} />
-                                  <Route path={`${url}/:idtype/details/:id`} component={DetailsImmo} />
+                                  <Route path={`${url}/:status/details/:id`} component={DetailsImmo} />
                               </>
                           )}
                           />

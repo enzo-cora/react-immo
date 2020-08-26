@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Accueil = ()=> {
+const Accueil  = ()=> {
     return (
         <div>
-            <p>Acceuil</p>
+            <p>Acceuil </p>
         </div>
     );
 }

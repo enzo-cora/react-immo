@@ -19,11 +19,12 @@
 
 ### GET - getOneById :
 > /api1/articles/getOne/:id
-* id : "article id "
+* id : "article_id"
 
 ### GET - getByCategories :
-> /api1/articles/getByCategories/:id'
-* id : 'autre'/'achat'/'vente'/'location'/'confiance'
+> /api1/articles/getByCategories/:id?number=5'
+* id : 'autre' | 'achat' |'vente' |'location'| 'confiance'
+* number : queryParams for number of articles
 
 ### GET - getLast :
 > /api1/articles/getLast
@@ -238,7 +239,7 @@
 }
 ```
 
-### GET - get4LatestImmos : 
+### GET - getLatestImmos : 
 > /api1/immobilier/getLast/:quantity
 * quantity : number ('how many ?')
 

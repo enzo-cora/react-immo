@@ -19,10 +19,11 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
 
 
     useEffect(()=> {
-        if(filters?.status === status){
+        if(filters?.status !== status){
             saveFilters({...filters,status : status})
         }else{
             saveFilters({status : status})
+
         }
         fetchByFilters()
 
@@ -35,8 +36,9 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
     const kitchenData = [1,2,3]
 
     const formRef = useRef(null)
-    
-    function handleChange () {
+
+
+    function handleFormChange () {
 
         let form : any = formRef.current
         let filters : any = {status : status}
@@ -53,7 +55,7 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
         }
 
         for (let elem of form.elements) {
-            if (elem.value && elem.value.length > 0) {
+            if (elem.value.length > 0) {
                 switch (elem.name) {
                     case 'minSurface' :
                         if (filters.surface === undefined)
@@ -77,7 +79,7 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
                         break;
                     default:
                         elem.tagName === 'SELECT'? filters[elem.name] = getSelectedValues(elem) :
-                            filters[elem.name] = elem.value
+                        filters[elem.name] = elem.value
                         break;
                 }
             }
@@ -89,33 +91,33 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
 
     return (
         <div>
-            <h2>Vos filtres </h2>
+        <h2>Vos filtres </h2>
             <section >
-                <form ref={formRef}  >
+                <form ref={formRef} onChange={handleFormChange} >
 
                     <div className={css.flexRow}>
                         <aside>
 
                             <div>
                                 <label> Regions
-                                    <input onChange={handleChange}  value={filters?.region || ''} placeholder="Ile-de-France" name="region" type="text" />
+                                    <input placeholder="Ile-de-France" value={filters?.region} name="region" type="text" />
                                 </label>
                             </div>
 
                             <div>
                                 <label > Ville
-                                    <input onChange={handleChange} placeholder="Paris" value={filters?.city || ''} name="city" id="city" type="text"/>
+                                    <input placeholder="Paris" defaultValue={filters?.city} name="city" id="city" type="text"/>
                                 </label>
                             </div>
 
                             <div>
                                 <label> Code Postal
-                                    <input onChange={handleChange} placeholder="75235 CEDEX 05"  value={filters?.postal_code || ''} name="postal_code" type="text"/>
+                                    <input placeholder="75235 CEDEX 05"  defaultValue={filters?.postal_code} name="postal_code" type="text"/>
                                 </label>
                             </div>
 
                             <p>
-                                <select onChange={handleChange} name="type" value={filters?.type || []} multiple >
+                                <select name="type" defaultValue={filters?.type} multiple >
                                     {typeData.map((elem,index) => {
                                         return <option key={index} value={elem}>{elem}</option>
                                     })}
@@ -127,15 +129,15 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
                         <div>
                             <p>
                                 <label>Prix
-                                    <input onChange={handleChange} type="number" value={filters?.price && filters.price[0] ? filters.price[0] : ''} name="minPrice" placeholder={'minimum'} min={'0'}/>
-                                    <input onChange={handleChange} type="number" value={filters?.price && filters.price[1] ? filters.price[1] : ''} name="maxPrice" placeholder={'maximum'} min={'0'}/>
+                                    <input type="number" defaultValue={filters?.price && filters.price[0] ? filters.price[0] : undefined} name="minPrice" placeholder={'minimum'} min={'0'}/>
+                                    <input type="number" defaultValue={filters?.price && filters.price[1] ? filters.price[1] : undefined} name="maxPrice" placeholder={'maximum'} min={'0'}/>
                                 </label>
                             </p>
 
                             <p>
                                 <label>Surface
-                                    <input onChange={handleChange} type="number" value={filters?.surface && filters.surface[0] ? filters.surface[0] : ''} name="minSurface" placeholder={'minimum'} min={'0'}/>
-                                    <input onChange={handleChange} type="number" value={filters?.surface && filters.surface[1] ? filters.surface[1] : ''} name="maxSurface"  placeholder={'maximum'} min={'0'}/>
+                                    <input type="number" defaultValue={filters?.surface && filters.surface[0] ? filters.surface[0] : undefined} name="minSurface" placeholder={'minimum'} min={'0'}/>
+                                    <input type="number" defaultValue={filters?.surface && filters.surface[1] ? filters.surface[1] : undefined} name="maxSurface"  placeholder={'maximum'} min={'0'}/>
                                 </label>
                             </p>
 
@@ -143,7 +145,7 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
 
                                 <div>
                                     <p>salon(s) :</p>
-                                    <select onChange={handleChange} name="living_room" value={filters?.living_room || []} multiple >
+                                    <select name="living_room" defaultValue={filters?.living_room} multiple >
                                         {living_roomData.map((elem,index) => {
                                             return <option key={index}  value={elem}>{elem}</option>
                                         })}
@@ -152,7 +154,7 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
 
                                 <div>
                                     <p>cuisines(s) :</p>
-                                    <select onChange={handleChange} name="kitchen" value={filters?.kitchen || []} multiple >
+                                    <select name="kitchen" defaultValue={filters?.kitchen} multiple >
                                         {kitchenData.map((elem,index) => {
                                             return <option key={index}  value={elem}>{elem}</option>
                                         })}
@@ -161,7 +163,7 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
 
                                 <div>
                                     <p>chambres(s) :</p>
-                                    <select onChange={handleChange} name="bedroom" value={filters?.bedroom || []} multiple >
+                                    <select name="bedroom" defaultValue={filters?.bedroom} multiple >
                                         {bedroomsData.map((elem,index) => {
                                             return <option key={index}  value={elem}>{elem}</option>
                                         })}
@@ -170,7 +172,7 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
 
                                 <div>
                                     <p>Salle(s) de bains :</p>
-                                    <select onChange={handleChange} name="bathroom" value={filters?.bathroom || []} multiple >
+                                    <select name="bathroom" defaultValue={filters?.bathroom} multiple >
                                         {bathroomsData.map((elem,index) => {
                                             return <option key={index} value={elem}>{elem}</option>
                                         })}
@@ -205,5 +207,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Filtrator2000)
-
 
