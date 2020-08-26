@@ -368,7 +368,7 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
    sousTitre: string,
 }
 ```
-ATTENTION : Les photos contenus dans le corp de l'article doivent être en base64 ET doivent AUSSI être conteu dans un Array<File> avec le fieldName "imgs"
+ATTENTION : Les photos contenus dans le corp de l'article doivent être en base64 ET doivent AUSSI être contenues dans un Array\<File> avec le fieldName "imgs"
 
 
 ### PUT - edit one article :
@@ -388,7 +388,7 @@ ATTENTION : Les photos contenus dans le corp de l'article doivent être en base6
     sousTitre: string,
 }
 ```
-ATTENTION : Les photos contenus dans le corp de l'article doivent être en base64 ET doivent AUSSI être conteu dans un Array<File> avec le fieldName "imgs"
+ATTENTION : Les photos contenues dans le corp de l'article doivent être en BASE64 ET doivent AUSSI être contenues dans un Array\<File> avec le fieldName "imgs"
 
 ### DELETE - delete one article :
 > /api1/admin/articles/delete/:reference
