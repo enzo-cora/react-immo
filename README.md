@@ -155,6 +155,7 @@
 > /api1/immobilier/filter'
 * status : "achat" or "location"
 * body request : 
+
 ```javascript
 {
         type?: ['local?', 'appartement?', 'maison?'],
@@ -172,11 +173,11 @@
         postal_code? : string,
 }
 ```
-### POST - getOneByReference :
+### POST - get One Immo By Reference :
 > /api1/immobilier/findOne/:reference
 * reference : "logement_reference" 
 
-### POST - getNumberOfResultsByFilters :
+### POST - get Number Of Results By Filters :
 > /api1/immobilier/numberResults
 
 * body request : 
@@ -360,8 +361,8 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
    titre: string,
    reference: string,
    contenu: string,
-   img: file //banniere
-   imgs : [file] //Photo in articles must be
+   img: file, //banniere
+   imgs : [file], //Photo in articles must be
    online: boolean,
    categorie: string,
    sousTitre: string,
