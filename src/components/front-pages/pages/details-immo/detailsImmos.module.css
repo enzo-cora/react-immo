@@ -1,0 +1,17 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.miniatures{
+    width: 15%;
+    height: auto;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.banner{
+    width: 100%;
+    height: auto;
+}

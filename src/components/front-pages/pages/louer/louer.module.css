@@ -1,0 +1,14 @@
+.section{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aside{
+    border: red 1px solid;
+    margin: 1rem;
+    width: 600px;
+}
+
+.div{
+    display: flex;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
+import ShowImmo from "../../structure/showImmos/ShowImmo";
 
-const Acheter = ()=> {
+const Louer = ()=> {
     return (
-        <p>Acheter</p>
+        <ShowImmo status={'achat'}/>
     );
 }
 
-export default Acheter;
+export default Louer;

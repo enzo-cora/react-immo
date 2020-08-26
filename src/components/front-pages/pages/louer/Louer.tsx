@@ -1,9 +1,9 @@
 import React from 'react';
+import ShowImmo from "../../structure/showImmos/ShowImmo";
 
-const Louer = (props:any)=> {
-    console.log(props)
+const Louer = ()=> {
     return (
-        <p>Louer</p>
+        <ShowImmo status={'location'}/>
     );
 }
 

@@ -1,44 +1,255 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# -------------L'API --------------
 
-## Available Scripts
+## ---Articles---  
+### Model API : 
+```json 
+{
+   "titre":"string",
+   "reference":"string",
+   "contenu":"string",
+   "photo":"string",
+   "online":"boolean",
+   "categorie":"string",
+   "sousTitre":"string",
+   "date?":"Date"
+}
+```
+### GET - getAll :
+> /api1/articles/getAll
 
-In the project directory, you can run:
+### GET - getOneById :
+> /api1/articles/getOne/:id
+* id : "article_id"
 
-### `npm start`
+### GET - getByCategories :
+> /api1/articles/getByCategories/:id?number=5'
+* id : 'autre' | 'achat' |'vente' |'location'| 'confiance'
+* number : queryParams for number of articles
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### GET - getLast :
+> /api1/articles/getLast
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## ---Agence--- 
+### Model API : 
+```json 
+{
+   "nomAgence":"string",
+   "photos?":["string"],
+   "fixe1":"number",
+   "fixe2":"number",
+   "portable":"number",
+   "mail1":"string",
+   "mail2":"string",
+   "horraires":"string",
+   "jours":"string",
+   "presentation":"string",
+   "address":{
+      "country":"string",
+      "region":"string",
+      "city":"string",
+      "street":"string",
+      "postal_code":"string",
+      "longitude":"number",
+      "latitude":"number"
+   },
+   "gerant":{
+      "nom":"string",
+      "prenom":"string",
+      "photo":"string",
+    }
+}
+```
+### GET - getAgenceInfos :
+> /api1/agence/getAgence
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### POST - modifyAgenceInfos ( Need to be admin ) :
+> /api1/agence/modifyAgence
 
-### `npm run build`
+* Body post request : 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript 
+{
+    nomAgence : string ,
+    photos? : [string] ,
+    fixe1 : number,
+    fixe2 : number,
+    portable : number,
+    mail1 : string,
+    mail2 : string,
+    horraires : string,
+    jours : string,
+    presentation : string,
+    country: string,
+    region : string,
+    city  : string  ,
+    street :  string  ,
+    postal_code : string  ,
+    longitude : number,
+    latitude : number,
+    nom : string,
+    prenom : string,
+    photo : string, //Photo de l'agent
+}
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ---Authentification---
+### Model API : 
+```json 
+{
+   "_id":"string",
+   "mail":"string",
+   "mdp":"string",
+   "sexe":"string",
+   "nom":"string",
+   "prenom":"string",
+   "address":{
+      "pays":"string",
+      "ville":"string",
+      "cp":"number",
+      "rue":"string"
+   },
+   "phone":"number",
+   "pub1?" :"boolean",
+   "pub2?":"boolean",
+   "isAdmin?":"boolean",
+   "created_date":"Date"
+}
+```
 
-### `npm run eject`
+### POST - Register : 
+> /api1/authentification/register
+* body post request :
+```javascript
+{
+  _id : string,
+  mail : string,
+  mdp : string,
+  sexe : string,
+  nom : string,
+  prenom : string,
+  pays : string,
+  ville : string,
+  cp : number,
+  rue : string,
+  phone : number,
+  pub1? : boolean,
+  pub2? : boolean,
+  isAdmin? : boolean
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### POST - Login : 
+> /api1/authentification/login
+* body post request :
+{
+  mail : string,
+  mdp : string,
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### GET - getUserInformations : ( Need to be connected )
+> /api1/authentification/user/:id
+* "id" : "user_id"
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## ---Immobilier---
+### Model API: 
+```JSON 
+{
+   "type":"string",
+   "status":"string",
+   "title":"string",
+   "description":"string",
+   "surface":"number",
+   "price":"number",
+   "bedroom":"number",
+   "bathroom":"number",
+   "living_room":"number",
+   "kitchen":"number",
+   "rooms":"number",
+   "garage":"boolean",
+   "terrace":"boolean",
+   "address" : {
+       "country":"string",
+       "region":"string",
+       "city":"string",
+       "street":"string",
+       "postal_code":"string",
+       "longitude":"number",
+       "latitude":"number",
+   },
+   "date":"Date",
+   "selleurName?":"string",
+   "selleurFirstName?":"string",
+   "reference?":"string",
+   "offres?":[],
+   "banniere?":"string",
+   "photos?":[],
+   "_id?":"string"
+}
+```
 
-## Learn More
+### GET - getAll : 
+> /api1/immobilier
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### POST - getSomesByFilters :
+> /api1/immobilier/filter'
+* status : "achat" or "location"
+* body post request : 
+```javascript
+{
+        type?: ['local?', 'appartement?', 'maison?'],
+        status?: ['achat?' | 'location?'],
+        surface?: [min,max],
+        price? : [min,max],
+        bedroom?: number,
+        bathroom?: number,
+        living_room? : number,
+        kitchen? : number,
+        garage? : boolean,
+        terrace? : boolean,
+        region? : string,
+        city?  : string,
+        postal_code? : string,
+}
+```
+### POST - getOneById :
+> /api1/immobilier/findOne/:id
+* id : "logement_id" 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### POST - getNumberOfResultsByFilters :
+> /api1/immobilier/numberResults
+
+* body post request : 
+```javascript
+{
+        type?: ['local?', 'appartement?', 'maison?'],
+        surface?: [min,max],
+        price? : [min,max],
+        bedroom?: number,
+        bathroom?: number,
+        living_room? : number,
+        kitchen? : number,
+        garage? : boolean,
+        terrace? : boolean,
+        region? : string,
+        city?  : string,
+        postal_code? : string,
+}
+```
+
+### GET - getLatestImmos : 
+> /api1/immobilier/getLast/:quantity
+* quantity : number ('how many ?')
+
+### POST - get all distinct value for one key : 
+> /api1/immobilier/getDistinct
+* body post request : 
+
+```javascript
+{ name : type | status | title | description | surface | price | bedroom | bathroom | living_room | kitchen | rooms | garage | terrace | country | region | city | street | postal_cod | longitude | latitude | date | selleurName | selleurFirstName | reference | offres |  banniere | photos | _id
+}
+```
+# ---------- Le FRONT-END ----------
+Site web d'agence immobilière 
