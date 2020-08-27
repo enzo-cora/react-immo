@@ -11,7 +11,6 @@ import {
     IMMO_GET_ONE_SUCCESS, RESET_IN_IMMO,
 } from "../constants/constants-immo";
 import {Immobilier} from "../models/immobilier";
-import {RESET_IN_PAGE} from "../constants/constants-page";
 
 //-------------------GET ALL IMMO-------------------
 export const fetchAllImmos = () => ({
@@ -22,8 +21,9 @@ export const fetchAllImmosSuccess = (immos : Immobilier) => ({
     type : IMMO_GET_ALL_SUCCESS,
     payload : immos
 })
-export const fetchAllImmosError = () => ({
+export const fetchAllImmosError = (error) => ({
     type : IMMO_GET_ALL_ERROR,
+    payload : error
 })
 
 //------------------GET SOMES BY FILTERS-------------------
@@ -35,8 +35,9 @@ export const fetchByFiltersSuccess = (immos : Immobilier) => ({
     type : IMMO_GET_BY_FILTERS_SUCCESS,
     payload : immos
 })
-export const fetchByFiltersError = () => ({
+export const fetchByFiltersError = (error) => ({
     type : IMMO_GET_BY_FILTERS_ERROR,
+    payload : error
 })
 
 
@@ -49,8 +50,9 @@ export const fetchOneByIdSuccess = (immo) => ({
     type : IMMO_GET_ONE_SUCCESS,
     payload : immo
 })
-export const fetchOneByIdError = () => ({
+export const fetchOneByIdError = (error) => ({
     type : IMMO_GET_ONE_ERROR,
+    payload : error
 })
 
 //----------------RESET THIS---------------------

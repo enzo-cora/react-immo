@@ -9,8 +9,10 @@ import {
 } from "../../actions/actions-immos";
 import {catchError, map, mergeMap, retry, takeUntil} from "rxjs/operators";
 import {ofType} from "redux-observable";
+import {IMMO_POST_NEW} from "../../constants/constants-admin";
 
 let link = window.location.protocol +'//'+ window.location.hostname + '/api1/immobilier'
+let linkAdmin = window.location.protocol +'//'+ window.location.hostname + '/api1/admin/immo'
 
 export const epic_getAllImmos = action$ => (
     action$.pipe(
@@ -22,7 +24,7 @@ export const epic_getAllImmos = action$ => (
                 retry(2),
                 catchError(error => {
                     console.log(error)
-                    return  of(fetchAllImmosError() )
+                    return  of(fetchAllImmosError(error) )
                 } )
             )
         )
@@ -44,7 +46,7 @@ export const epic_getImmosByFilter = (action$,state$) => (
                         retry(2),
                         catchError(error => {
                             console.log(error)
-                            return of(fetchByFiltersError())
+                            return of(fetchByFiltersError(error))
                         })
             ) }
         )
@@ -61,10 +63,30 @@ export const epic_getOneById = (action$) => (
                 retry(2),
                 catchError(error => {
                     console.log(error)
-                    return  of(fetchOneByIdError() )
+                    return  of(fetchOneByIdError(error) )
                 } )
             )
         )
     )
 )
 
+export const epic_postNewImmo = (action$,state$) => (
+    action$.pipe(
+        ofType(IMMO_POST_NEW),
+        mergeMap( (action:any) => {
+            let url = action.payload.link
+            let data = action.payload.data
+            // let headers = { 'Content-Type': 'multipart/form-data' }
+            return ajax.post(linkAdmin + url, data)
+                .pipe(
+                    map( (req:any) => fetchByFiltersSuccess(req.response)),
+                    takeUntil(action$.ofType(IMMO_POST_NEW)),
+                    retry(2),
+                    catchError(error => {
+                        console.log(error)
+                        return of(fetchByFiltersError(error))
+                    })
+                ) }
+        )
+    )
+)
