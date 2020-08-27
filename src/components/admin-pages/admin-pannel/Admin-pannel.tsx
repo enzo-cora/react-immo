@@ -11,14 +11,14 @@ const AdminPannel = ()=> {
                 <Link to='/'><button>Retour</button></Link>
                 <ul className={css.ulAdmin}>
                     <div>Voir tous :</div>
-                    <li><Link to='/admin/immo/new'><button>immo</button></Link></li>
+                    <li><Link to='/admin/immo/show'><button>immo</button></Link></li>
                     <li><Link to='/aPropos'><button>Articles</button></Link></li>
                     <li><Link to='/aPropos'><button>utilisateurs</button></Link></li>
                 </ul>
 
                 <ul className={css.ulAdmin}>
                     <div>Ajouter :</div>
-                    <li><Link to='/aPropos'><button>immo</button></Link></li>
+                    <li><Link to='/admin/immo/new'><button>immo</button></Link></li>
                     <li><Link to='/aPropos'><button>Articles</button></Link></li>
                 </ul>
 

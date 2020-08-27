@@ -1,4 +1,15 @@
 # -------------L'API --------------
+*PING - Without dataBase call : 
+>/api1/articles/test
+
+* RESPONSE ERROR FORMAT  :
+```json
+{success :{message : "string"}}
+```
+* RESPONSE SUCCESS FORMAT  : 
+```json
+{title : "string", message : error.message}
+```
 # --------------------------------- USER --------------------------------
 
 ## ---Articles---  
@@ -214,6 +225,10 @@
 
 # ----------------------------------- ADMIN ------------------------------------
 La différence des GETs Admin est qu'ils recupèrent + d'informations que les GETs User.
+## ADMIN ACCOUNT  
+* mail : admin@gmail.com
+* password : admin
+
 ## ---Immobilier Admin---
 ### OBJECT MODEL RECEIVED FROM API: 
 ```json 
