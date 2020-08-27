@@ -129,6 +129,22 @@
   mdp : string,
 }
 ```
+* Response : 
+```javascript
+{
+  token : string,
+  success : {message : string},
+  user : user,
+}
+```
+* token content : 
+```javascript
+{
+  userId : string,
+  isAdmin: boolean,
+  comeFrom : "immobilierApp"
+}
+```
 
 ### GET - getUserInformations : ( Need to be connected )
 > /api1/authentification/user/:id

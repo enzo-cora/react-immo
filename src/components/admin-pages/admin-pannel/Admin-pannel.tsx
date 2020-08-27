@@ -1,9 +1,10 @@
 import React from 'react';
 import css from './admin-pannel.module.css'
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
+import {Link, Route,Switch} from 'react-router-dom'
 import NewImmo from "../new-immo/New-immo";
 
 const AdminPannel = ()=> {
+    let url  ='/admin'
     return (
         <>
             <header className={css.menuAdmin} >
@@ -28,22 +29,15 @@ const AdminPannel = ()=> {
                 </ul>
             </header>
 
-            <Router>
-                <Switch>
-                    <Route path="/admin" render={({ match: { url } }) => (
-                        <>
-                            <Route path={`${url}/immo`} render={({ match: { url } }) => (
-                                <>
-                                    <Route path={`${url}/new`} component={NewImmo} />
-                                    <Route path={`${url}/update/:id`} component={NewImmo} />
-                                </>
-                            )}
-                            />
-                        </>
-                    )}
-                    />
-                </Switch>
-            </Router>
+            <Switch>
+                <Route path={`${url}/immo`} render={({ match: { url } }) => (
+                    <>
+                        <Route path={`${url}/new`} component={NewImmo} />
+                        <Route path={`${url}/update/:id`} component={NewImmo} />
+                    </>
+                )}
+                />
+            </Switch>
 
         </>
 

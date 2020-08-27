@@ -4,17 +4,14 @@
 //get all immo
 export const IMMO_GET_ALL = 'IMMO_GET_ALL' ;
 export const IMMO_GET_ALL_SUCCESS = 'IMMO_GET_ALL_SUCCESS' ;
-export const IMMO_GET_ALL_ERROR = 'IMMO_GET_ALL_ERROR' ;
 
 //get somes by filters
 export const IMMO_GET_BY_FILTERS = 'IMMO_GET_BY_FILTERS' ;
 export const IMMO_GET_BY_FILTERS_SUCCESS = 'IMMO_GET_BY_FILTERS_SUCCESS' ;
-export const IMMO_GET_BY_FILTERS_ERROR = 'IMMO_GET_BY_FILTERS_ERROR' ;
 
 //get one by id
 export const IMMO_GET_ONE = 'IMMO_GET_ONE' ;
 export const IMMO_GET_ONE_SUCCESS = 'IMMO_GET_ONE_SUCCESS' ;
-export const IMMO_GET_ONE_ERROR = 'IMMO_GET_ONE_ERROR' ;
 
 //reset somethinh in immo :
 export const RESET_IN_IMMO = 'RESET_IN_IMMO'

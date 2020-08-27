@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import css from './header.module.css'
 import {Link} from 'react-router-dom'
+import {authLogout} from "../../../../actions/actions-auth";
+import {connect} from "react-redux";
 
-const Header = ()=> {
+type state = {
+    authLogout() : void,
+    isAuth? : boolean
+}
+
+const Header : FunctionComponent<state> = ({authLogout,isAuth,...rest})=> {
+
+    const handleLogout = ()=>{
+        authLogout()
+    }
+
     return (
         <header className={css.menuHeader} >
             <p>Transactimo</p>
@@ -16,14 +28,32 @@ const Header = ()=> {
 
             <ul className={css.ulHeader}>
                 <Link to='/aPropos'>L'agence</Link>
-                <button>Contact</button>
-                <Link to='/auth/connexion'>Connexion</Link>
-                <Link to='/auth/inscription'>Inscription</Link>
-                <Link to='/auth/compte'>Mon compte</Link>
+                <Link to='/'>Contact</Link>
+                {!isAuth && <>
+                    <button><Link to='/auth/connexion'>Connexion</Link></button>
+                    <button><Link to='/auth/inscription'>Inscription</Link></button>
+                </>}
+                {isAuth && <>
+                    <button><Link to='/auth/compte'>Mon compte</Link></button>
+                    <button onClick={handleLogout}>Deconnexion</button>
+                </>}
+
+                {}
             </ul>
         </header>
 
     );
 }
+const mapStateToProps = (state:any)=>({
+    isAuth : state.auth.isAuth
+})
 
-export default Header;
+const mapDispatchToProps = {
+    authLogout,
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header)
+

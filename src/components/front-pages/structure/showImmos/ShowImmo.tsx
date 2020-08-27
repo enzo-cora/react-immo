@@ -68,7 +68,6 @@ const ShowImmo : FunctionComponent<state> = ({scroll,comeFrom,immos,status,page,
 
     return (
         <>
-            {console.log('salutsalut')}
             <Filtrator2000 status={status}/>
             {immos && <ReactPaginate previousLabel={"prev"}
                                      nextLabel={"next"}
