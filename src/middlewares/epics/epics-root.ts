@@ -5,5 +5,5 @@ export const rootEpic =  combineEpics(
     epic_getAllImmos,
     epic_getImmosByFilter,
     epic_getOneById,
-    epic_postNewImmo
+    epic_postNewImmo,
 )

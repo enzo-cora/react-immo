@@ -3,12 +3,13 @@ import css from './new-immo.module.css'
 import {connect} from "react-redux";
 import {fetchNewImmo} from "../../../actions/action-admin-immo";
 
+
 type state = {
     resp : { any } ,
     fetchNewImmo(data : FormData) : void
 }
 
-const NewImmo : FunctionComponent<state> = ({resp,fetchNewImmo})=> {
+const NewImmo : FunctionComponent<state> = ({fetchNewImmo})=> {
 
 
     function handleSubmit (e){
@@ -38,31 +39,36 @@ const NewImmo : FunctionComponent<state> = ({resp,fetchNewImmo})=> {
         }
         let rooms : any = +elems['bedroom'].value + +elems['living_room'].value
         formData.append('rooms',rooms)
-        console.log(rooms)
         fetchNewImmo(formData)
     }
 
 
     return (
         <>
-            {resp && console.log(resp)}
             <form onSubmit={handleSubmit} className={css.column}>
 
                 <div>Banniere
-                    <input type="file" name="img" accept="image/jpeg" />
+                    <input required type="file" name="img" accept="image/jpeg" />
                 </div>
 
                 <div>Miniatures
                     <input type="file" name="imgs" multiple accept="image/jpeg" />
                 </div>
 
-                <div><label>status
-                        <input type="text" name="status" />
-                    </label></div>
+                <div>
+                    <select name="status">
+                        <option value="location">Location</option>
+                        <option value="achat">Achat</option>
+                    </select>
+                </div>
 
-                <div><label>type
-                    <input type="text" name="type"/>
-                </label></div>
+                <div>
+                    <select name="type">
+                        <option value="maison">Maison</option>
+                        <option value="appartement">Maison</option>
+                        <option value="local">Maison</option>
+                    </select>
+                </div>
 
                 <div><label>title
                     <input type="text" name="title"/>
@@ -148,16 +154,13 @@ const NewImmo : FunctionComponent<state> = ({resp,fetchNewImmo})=> {
 
 
 //-----------CONTAINER-------------------
-const mapStateToProps = state => ({
-  resp : state.admin.resp
-})
 
 const mapDispatchToProps = {
-    fetchNewImmo
+    fetchNewImmo,
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(NewImmo)
 

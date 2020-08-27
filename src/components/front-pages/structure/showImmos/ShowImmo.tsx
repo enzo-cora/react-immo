@@ -43,7 +43,6 @@ const ShowImmo : FunctionComponent<state> = ({scroll,comeFrom,immos,status,page,
                 rest.resetInPage('*')
             }
         })
-
         return ()=> unlisten()
     },[]) // eslint-disable-line
 
@@ -56,7 +55,6 @@ const ShowImmo : FunctionComponent<state> = ({scroll,comeFrom,immos,status,page,
     },[total]) // eslint-disable-line
 
     function handlePageChange(e) {
-
         const selectedPage = e.selected;
         const offset = selectedPage * page.pagination.perPage;
         rest.savePagination({ currentPage : selectedPage, offset})
@@ -70,6 +68,7 @@ const ShowImmo : FunctionComponent<state> = ({scroll,comeFrom,immos,status,page,
 
     return (
         <>
+            {console.log('salutsalut')}
             <Filtrator2000 status={status}/>
             {immos && <ReactPaginate previousLabel={"prev"}
                                      nextLabel={"next"}
