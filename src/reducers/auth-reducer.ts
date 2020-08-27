@@ -1,4 +1,4 @@
-import {AUTH_LOGIN_SUCCESS, AUTH_LOGOUT, RESET_IN_AUTH} from "../constants/constants-auth";
+import {AUTH_LOGIN_SUCCESS, AUTH_LOGOUT, AUTH_REGISTER_SUCCESS, RESET_IN_AUTH} from "../constants/constants-auth";
 import {dataToken} from "../middlewares/functions/getDataToken";
 
 const reset = {isAuth : false}
@@ -10,6 +10,9 @@ export const authReducer = (state = reset, action) => {
             localStorage.setItem('Authorization','Bearer ' + action.payload.token);
             const {_id,isAdmin} = action.payload.user
             return {user : {_id,isAdmin}, isAuth : true}
+        //Register
+        case AUTH_REGISTER_SUCCESS :
+            return {...state,respSuccess : action.payload}
 
         //Logout
         case AUTH_LOGOUT :
