@@ -1,0 +1,18 @@
+.menuAdmin{
+    background: #cacaca;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.5rem;
+    padding: 0 10%;
+    margin-bottom: 5rem;
+}
+
+.ulAdmin > * {
+    color: blue;
+    margin: 0 0.2rem;
+}
+
+.mesParagraphe{
+    color: blue;
+}

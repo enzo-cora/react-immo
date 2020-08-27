@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import css  from './showImmos.module.css'
 import {resetInPage, savePagination, saveScrollElement} from "../../../../actions/actions-pages";
 import {connect} from "react-redux";
-import React, {FunctionComponent, useEffect, useRef} from "react";
+import React, {FunctionComponent, useEffect} from "react";
 import {useHistory,useLocation} from "react-router-dom";
 import {resetInImmo} from "../../../../actions/actions-immos";
 import {getPageCount, getSliceImmos, getTotal} from "../../../../selectors/immos-selector";
@@ -38,7 +38,7 @@ const ShowImmo : FunctionComponent<state> = ({scroll,comeFrom,immos,status,page,
         let unlisten = history.listen(newLocation => {
             let regex = new RegExp('(achat|location)/details/')
             let newPath = newLocation.pathname
-            if (!newPath.match(regex) && newPath != location.pathname ){
+            if (!newPath.match(regex) && newPath !== location.pathname ){
                 rest.resetInImmo('*')
                 rest.resetInPage('*')
             }
@@ -53,7 +53,7 @@ const ShowImmo : FunctionComponent<state> = ({scroll,comeFrom,immos,status,page,
             const offset = selectedPage * page.pagination.perPage;
             rest.savePagination({offset, currentPage : selectedPage})
         }
-    },[total])
+    },[total]) // eslint-disable-line
 
     function handlePageChange(e) {
 

@@ -19,7 +19,6 @@ export const IMMO_GET_ONE_ERROR = 'IMMO_GET_ONE_ERROR' ;
 //reset somethinh in immo :
 export const RESET_IN_IMMO = 'RESET_IN_IMMO'
 
-
 /*
 export const IMMO_POST_NUMBER_RESULTS = 'IMMO_POST_NUMBER_RESULTS' ;
 export const IMMO_POST_NUMBER_RESULTS_SUCCESS = 'IMMO_POST_NUMBER_RESULTS_SUCCESS' ;

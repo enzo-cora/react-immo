@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {lazy, Suspense} from 'react'
 import './App.css'
 import {BrowserRouter as Router , Route, Switch, Redirect} from "react-router-dom";
 
@@ -10,12 +10,13 @@ import Articles from "./components/front-pages/pages/articles/Articles";
 import DetailsImmo from "./components/front-pages/pages/details-immo/Details-immo";
 import Header from "./components/front-pages/structure/header/Header";
 import Footer from "./components/front-pages/structure/footer/Footer";
-import WhyUs from "./components/front-pages/modules/why-us/Why-us";
 import ItemArticle from "./components/front-pages/pages/articles/item-article/Item-article";
 import Error404 from "./error404";
 import Login from "./components/front-pages/auth/login/Login";
 import Register from "./components/front-pages/auth/register/Register";
 import Profile from "./components/front-pages/auth/profile/Profile";
+
+const AdminPannel = lazy(()=> import("./components/admin-pages/admin-pannel/Admin-pannel"))
 
 function App() {
   return (
@@ -23,14 +24,12 @@ function App() {
           <Switch>
 
               <Route path="/admin" render={({ match: { url } }) => (
-                  <>
-                      <Route path={`${url}/`} component={WhyUs} exact />
-                      <Route path={`${url}/articles`} component={Articles} />
-                      <Route path={`${url}/details`} component={DetailsImmo} />
-                  </>
+                  //Lazy loading
+                  <Suspense fallback={<div>Chargement...</div>}>
+                          <Route component={AdminPannel}/>
+                  </Suspense>
               )}
               />
-
               <Redirect exact from="/" to={`/accueil`}  />
               <Route path="/" render={({ match: { url } }) => (
                   <>

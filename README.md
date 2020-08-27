@@ -207,7 +207,7 @@
 * body request : 
 
 ```javascript
-{ name : type | status | title | description | surface | price | bedroom | bathroom | living_room | kitchen | rooms | garage | terrace | country | region | city | street | postal_cod | longitude | latitude | date | selleurName | selleurFirstName | reference | offres |  banniere | photos | _id
+{ name : type | status | title | description | surface | price | bedroom | bathroom | living_room | kitchen | rooms | garage | terrace | country | region | city | street | postal_cod | longitude | latitude | date | sellerName | sellerFirstName | reference | offres |  banniere | photos | _id
 }
 
 ```
@@ -241,13 +241,13 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
        "latitude":"number",
    },
    Date:Date,
-   "selleurName?":"string",
-   "selleurFirstName?":"string",
-   "reference?":"string",
+   "sellerName":"string",
+   "sellerFirstName?":"string",
+   "reference":"string",
    "offres?":["string"],
-   "banniere?":"string",
-   "photos?":["string"],
-   "_id?":"string"
+   "banniere":"string",
+   "photos":["string"],
+   "_id":"string"
 }
 ```
 
@@ -263,32 +263,31 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
 * body request :
 ```javascript
 {
-   type: string,
-   status: string,
-   title: string,
-   description: string,
-   surface: number,
-   price: number,
-   bedroom: number,
-   bathroom: number,
-   living_room: number,
-   kitchen: number,
-   rooms: number,
-   garage: boolean,
-   terrace: boolean,
-   country: string,
-   region: string,
-   city: string,
-   street: string,
-   postal_code: string,
-   longitude: number,
-   latitude: number,
-
-   selleurName?: string,
-   selleurFirstName?: string,
-   offres?:[string],
-   img?: file,
-   imgs?: [file],
+    type: string,
+    status: string,
+    title: string,
+    description: string,
+    surface: number,
+    price: number,
+    bedroom: number,
+    bathroom: number,
+    living_room: number,
+    kitchen: number,
+    rooms: number,
+    garage: boolean,
+    terrace: boolean,
+    country: string,
+    region: string,
+    city: string,
+    street: string,
+    postal_code: string,
+    longitude: number,
+    latitude: number,
+    sellerName: string,
+    sellerFirstName: string,
+    img: file,
+    imgs: [file],
+    offres?:[string],
 }
 ```
 
@@ -324,13 +323,11 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
    postal_code: string,
    longitude: number,
    latitude: number,
-
-   selleurName?: string,
-   selleurFirstName?: string,
-   reference?: string,
+   sellerName: string,
+   sellerFirstName: string,
+   img: file,
+   imgs: [file],
    offres?:[string],
-   img?: file,
-   imgs?: [file],
 }
 ```
 

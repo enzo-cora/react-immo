@@ -6,6 +6,7 @@ const Header = ()=> {
     return (
         <header className={css.menuHeader} >
             <p>Transactimo</p>
+            <button><Link className={css.Link} to='/admin'>Admin</Link></button>
             <ul className={css.ulHeader}>
                 <Link className={css.Link} to='/accueil'>Accueil</Link>
                 <Link to='/immobilier/acheter'>Acheter</Link>

@@ -1,31 +1,19 @@
 import {combineReducers} from "redux";
 import {immosReducer} from "./immos-reducer";
 import {pageReducer} from "./page-reducer";
+import {adminReducer} from "./admin-reducer";
 
-/*
-const rootReducer = combineReducers({
-    immobilier : immosReducer,
-    page : pageReducer
-})
-
-export default rootReducer
-*/
 
 const appReducer = combineReducers({
     immobilier : immosReducer,
-    page : pageReducer
+    page : pageReducer,
+    admin : adminReducer
 })
 
 const rootReducer = (state, action) => {
     switch (action.type) {
         case 'RESET_ALL':
-            state = undefined
-            break
-        case 'RESET_IMMO':
-            state = {...state, immobilier: {}}
-            break
-        case 'RESET_PAGE':
-            state = {...state, page: {}}
+            state = {}
             break
 
     }
