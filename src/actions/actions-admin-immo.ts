@@ -1,17 +1,13 @@
-import {IMMO_POST_NEW, IMMO_POST_NEW_ERROR, IMMO_POST_NEW_SUCCESS, RESET_IN_ADMIN} from "../constants/constants-admin";
+import {ADMIN_POST_NEW_IMMO, ADMIN_POST_NEW__IMMO_SUCCESS, RESET_IN_ADMIN} from "../constants/constants-admin";
 
 //Post new logement
 export const fetchNewImmo = (data) => ({
-    type : IMMO_POST_NEW,
+    type : ADMIN_POST_NEW_IMMO,
     payload : {link : '/newImmo',data}
 })
 export const fetchNewImmoSuccess = (resp) => ({
-    type : IMMO_POST_NEW_SUCCESS,
+    type : ADMIN_POST_NEW__IMMO_SUCCESS,
     payload : resp
-})
-export const fetchNewImmoError = (error) => ({
-    type : IMMO_POST_NEW_ERROR,
-    payload : error
 })
 
 //----------------RESET THIS---------------------

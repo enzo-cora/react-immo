@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import css from './new-immo.module.css'
 import {connect} from "react-redux";
-import {fetchNewImmo} from "../../../actions/action-admin-immo";
+import {fetchNewImmo} from "../../../actions/actions-admin-immo";
 
 
 type state = {

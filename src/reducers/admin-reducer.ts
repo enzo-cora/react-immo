@@ -1,4 +1,4 @@
-import {IMMO_POST_NEW_SUCCESS, RESET_IN_ADMIN} from "../constants/constants-admin";
+import {ADMIN_POST_NEW__IMMO_SUCCESS, RESET_IN_ADMIN} from "../constants/constants-admin";
 
 
 const reset = {}
@@ -6,7 +6,7 @@ const reset = {}
 export const adminReducer = (state = reset, action) => {
     switch (action.type) {
         //add new immo
-        case IMMO_POST_NEW_SUCCESS :
+        case ADMIN_POST_NEW__IMMO_SUCCESS :
             return {...state, resp : action.payload}
 
         case RESET_IN_ADMIN:
