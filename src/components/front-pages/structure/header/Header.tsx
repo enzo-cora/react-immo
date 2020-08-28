@@ -3,13 +3,18 @@ import css from './header.module.css'
 import {Link} from 'react-router-dom'
 import {authLogout} from "../../../../actions/actions-auth";
 import {connect} from "react-redux";
+import {User} from "../../../../models/user";
 
 type state = {
     authLogout() : void,
-    isAuth? : boolean
+    auth : {
+        isAuth : boolean,
+        user : User
+    }
+
 }
 
-const Header : FunctionComponent<state> = ({authLogout,isAuth,...rest})=> {
+const Header : FunctionComponent<state> = ({authLogout,auth,...rest})=> {
 
     const handleLogout = ()=>{
         authLogout()
@@ -18,7 +23,8 @@ const Header : FunctionComponent<state> = ({authLogout,isAuth,...rest})=> {
     return (
         <header className={css.menuHeader} >
             <p>Transactimo</p>
-            <button><Link className={css.Link} to='/admin'>Admin</Link></button>
+            {auth.isAuth && auth.user.isAdmin &&
+            <button><Link className={css.Link} to='/admin'>Admin</Link></button>}
             <ul className={css.ulHeader}>
                 <Link className={css.Link} to='/accueil'>Accueil</Link>
                 <Link to='/immobilier/acheter'>Acheter</Link>
@@ -28,12 +34,12 @@ const Header : FunctionComponent<state> = ({authLogout,isAuth,...rest})=> {
 
             <ul className={css.ulHeader}>
                 <Link to='/aPropos'>L'agence</Link>
-                <Link to='/'>Contact</Link>
-                {!isAuth && <>
+                <Link to='/contact'>Contact</Link>
+                {!auth.isAuth && <>
                     <button><Link to='/auth/connexion'>Connexion</Link></button>
                     <button><Link to='/auth/inscription'>Inscription</Link></button>
                 </>}
-                {isAuth && <>
+                {auth.isAuth && <>
                     <button><Link to='/auth/compte'>Mon compte</Link></button>
                     <button onClick={handleLogout}>Deconnexion</button>
                 </>}
@@ -45,7 +51,7 @@ const Header : FunctionComponent<state> = ({authLogout,isAuth,...rest})=> {
     );
 }
 const mapStateToProps = (state:any)=>({
-    isAuth : state.auth.isAuth
+    auth : state.auth,
 })
 
 const mapDispatchToProps = {

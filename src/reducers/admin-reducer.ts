@@ -1,4 +1,9 @@
-import {ADMIN_POST_NEW__IMMO_SUCCESS, RESET_IN_ADMIN} from "../constants/constants-admin";
+import {
+    ADMIN_GET_ALL_ARTICLE_SUCCESS,
+    ADMIN_POST_NEW_ARTICLE_SUCCESS,
+    ADMIN_POST_NEW_IMMO_SUCCESS,
+    RESET_IN_ADMIN
+} from "../constants/constants-admin";
 
 
 const reset = {}
@@ -6,9 +11,20 @@ const reset = {}
 export const adminReducer = (state = reset, action) => {
     switch (action.type) {
         //add new immo
-        case ADMIN_POST_NEW__IMMO_SUCCESS :
-            return {...state, resp : action.payload}
+        case ADMIN_POST_NEW_IMMO_SUCCESS :
+            return {...state, respSuccess : action.payload}
 
+        //get all articles
+        case ADMIN_GET_ALL_ARTICLE_SUCCESS :
+            return {...state, articles : action.payload}
+
+        //post new article
+        case ADMIN_POST_NEW_ARTICLE_SUCCESS :
+            return {...state, respSuccess : action.payload}
+
+
+
+        //reset field(s) in admin
         case RESET_IN_ADMIN:
             if(Array.isArray(action.payload)){
                 action.payload.forEach(elem =>{
@@ -23,7 +39,7 @@ export const adminReducer = (state = reset, action) => {
                 return {...state, [action.payload] : undefined}
             }
         default :
-            return state
+            return {...state,respSuccess: undefined}
     }
 }
 

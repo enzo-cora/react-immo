@@ -23,7 +23,7 @@
    "online":"boolean",
    "categorie":"string",
    "sousTitre":"string",
-   "date?":"Date"
+   "date":"Date"
 }
 ```
 ### GET - getAll :
@@ -387,12 +387,11 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
 ```javascript
 {
    titre: string,
-   reference: string,
    contenu: string,
    img: file, //banniere
-   imgs : [file], //Photo in articles must be
+   imgs : [file], //Photo in articles 
    online: boolean,
-   categorie: string,
+   categorie: string, //listCategorie = ['autre','achat','vente','location','confiance']
    sousTitre: string,
 }
 ```
@@ -407,12 +406,11 @@ ATTENTION : Les photos contenus dans le corp de l'article doivent être en base6
 ```javascript
 {
     titre: string,
-    reference: string,
     contenu: string,
     img: file //banniere
-    imgs : [file] //Photo in articles must be
+    imgs : [file] //Photo in articles 
     online: boolean,
-    categorie: string,
+    categorie: string, //listCategorie = ['autre','achat','vente','location','confiance']
     sousTitre: string,
 }
 ```

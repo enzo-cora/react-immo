@@ -5,7 +5,7 @@ export const dataToken = (token = localStorage.getItem('Authorization') ) : Obje
     if(token){
         try{
             let decodedToken : any =  jwt_decode(token)
-            if(decodedToken['comeFrom'] != 'immobilierApp' ) {
+            if(decodedToken['comeFrom'] !== 'immobilierApp' ) {
                 return false
             }else if (decodedToken['exp'] > Date.now() ){
                 localStorage.removeItem('Authorization')
