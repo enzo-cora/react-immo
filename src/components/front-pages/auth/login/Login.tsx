@@ -1,16 +1,14 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent } from 'react';
 import {connect} from "react-redux";
 import {fetchLogin} from "../../../../actions/actions-auth";
-import {useHistory} from 'react-router'
 
 type state = {
     fetchLogin( data : Object) : any,
     isAuth : boolean
 }
 
-const Login : FunctionComponent<state> = ({fetchLogin,isAuth,...rest})=> {
+const Login : FunctionComponent<state> = ({fetchLogin,isAuth})=> {
 
-    let history = useHistory
     const handleSubmit = (e) => {
         e.preventDefault()
         let elems = e.target.elements
@@ -23,13 +21,6 @@ const Login : FunctionComponent<state> = ({fetchLogin,isAuth,...rest})=> {
         fetchLogin(data)
     }
 
-    useEffect(()=>{
-        console.log("j'y suis")
-
-        if (isAuth){
-            history().goBack()
-        }
-    },[isAuth])
 
     return (
             <>

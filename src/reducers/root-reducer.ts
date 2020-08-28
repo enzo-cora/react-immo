@@ -32,7 +32,7 @@ const appReducer = combineReducers({
 const rootReducer = (state, action) => {
     switch (action.type) {
         case SHOW_ERROR:
-            console.log(action.payload)
+            console.log("Voici l'erreur : ",action.payload)
             break
 
     }
