@@ -1,4 +1,8 @@
-# -------------L'API --------------
+|||||||||||||||||||||||  FRONT-END ||||||||||||||||||||||||||
+REACT + REDUX + RXJS + TYPESCRIPT
+
+# |||||||||||||||||||||||  BACK-END API |||||||||||||||||||||
+# --------------------------- INFOS--------------------------
 *PING - Without dataBase call : 
 >/api1/articles/test
 
@@ -10,7 +14,8 @@
 ```json
 {title : "string", message : error.message}
 ```
-# --------------------------------- USER --------------------------------
+# ------------------------- USER----------------------------
+
 
 ## ---Articles---  
 ### OBJECT MODEL RECEIVED FROM API : 
@@ -239,7 +244,7 @@
 
 ```
 
-# ----------------------------------- ADMIN ------------------------------------
+# # ------------------------- ADMIN --------------------------
 La différence des GETs Admin est qu'ils recupèrent + d'informations que les GETs User.
 ## ADMIN ACCOUNT  
 * mail : admin@gmail.com
