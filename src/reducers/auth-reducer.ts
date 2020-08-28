@@ -10,6 +10,7 @@ export const authReducer = (state = reset, action) => {
             localStorage.setItem('Authorization','Bearer ' + action.payload.token);
             const {_id,isAdmin} = action.payload.user
             return {user : {_id,isAdmin}, isAuth : true}
+
         //Register
         case AUTH_REGISTER_SUCCESS :
             return {...state,respSuccess : action.payload}

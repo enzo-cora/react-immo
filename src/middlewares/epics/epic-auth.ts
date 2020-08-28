@@ -20,7 +20,6 @@ export const epic_login = (action$) => (
                 .pipe(
                     map( (req:any) => fetchLoginSuccess(req.response)),
                     takeUntil(action$.ofType(AUTH_LOGIN)),
-                    retry(2),
                     catchError(error => {
                             console.log(error)
                             return of(fetchError(error))
@@ -34,7 +33,6 @@ export const epic_register = (action$) => (
     action$.pipe(
         ofType(AUTH_REGISTER),
         mergeMap( (action:any) => {
-            console.log('salut')
             let url = action.payload.link
             let data = action.payload.data
             let headers = { 'Content-Type': 'application/json' }

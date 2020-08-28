@@ -22,15 +22,16 @@ import {getIsAdmin} from "./selectors/auth-selector";
 const AdminPannel = lazy(()=> import("./components/admin-pages/admin-pannel/Admin-pannel"))
 
 type state = {
-    error? : {
+    error? : { //NE PAS OUBLIER DE METTRE LES VARIABLES EN OPTIONNELS !!!!!
             title : string,
             message : string
     } | any,
     isAuth? : boolean
-    isAdmin? : boolean
+    isAdmin? : boolean,
+    respSuccess? : any
 }
 
-const Router : FunctionComponent<state> = ({error,isAuth,isAdmin}) => {
+const Router : FunctionComponent<state> = ({error,isAuth,isAdmin,respSuccess}) => {
   return (
       <>
           {error.response && <div style={{background : "orangered"}}>
@@ -38,12 +39,19 @@ const Router : FunctionComponent<state> = ({error,isAuth,isAdmin}) => {
               <h4>{error.response.title}</h4>
               <p>{error.response.message}</p>
           </div>}
+
+          {respSuccess && respSuccess.success && <div style={{background : "lightgreen"}}>
+              <h3>Bravo :</h3>
+              <h4>{respSuccess.success.title}</h4>
+              <p>{respSuccess.success.message}</p>
+          </div>}
+
           <RouterHtml>
               <Switch>
 
                   <Route path="/admin"  render={() => (
                       //Lazy loading
-                      <Suspense fallback={<div>Chargement...</div>}>
+                      <Suspense fallback={<h1>Chargement...</h1>}>
                           <GuardRoute guard={isAuth && isAdmin}  component={AdminPannel}/>
                       </Suspense>
                   )}
@@ -98,6 +106,7 @@ const Router : FunctionComponent<state> = ({error,isAuth,isAdmin}) => {
 //-------------------Container -------------------------
 const mapStateToProps = state => ({
     error : state.error,
+    respSuccess : state.admin.respSuccess,
     isAuth : state.auth.isAuth,
     isAdmin : getIsAdmin(state)
 })

@@ -2,6 +2,15 @@ main {
   position: relative;
 }
 
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
 .negativ_rounded_bottom{
   position: relative;
   padding-bottom: 8rem;
