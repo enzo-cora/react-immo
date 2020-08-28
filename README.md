@@ -1,16 +1,16 @@
 # |||||||||||||||||||||||||  FRONT-END ||||||||||||||||||||||||||
 ### REACT + REDUX + RXJS + TYPESCRIPT
 
-# |||||||||||||||||||||||||  API REST ||||||||||||||||||||||||||
+# |||||||||||||||||||||||||  API REST  ||||||||||||||||||||||||||
 # --------------------------- INFOS--------------------------
 *PING - Without dataBase call : 
 >/api1/articles/test
 
-* RESPONSE ERROR FORMAT  :
+* RESPONSE SUCCESS FORMAT  :
 ```json
 {success :{message : "string"}}
 ```
-* RESPONSE SUCCESS FORMAT  : 
+* RESPONSE ERROR FORMAT  : 
 ```json
 {title : "string", message : error.message}
 ```
@@ -254,7 +254,7 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
 ### OBJECT MODEL RECEIVED FROM API: 
 ```json 
 {
-   type:"string",
+   "type":"string",
    "status":"string",
    "title":"string",
    "description":"string",
@@ -276,7 +276,7 @@ La différence des GETs Admin est qu'ils recupèrent + d'informations que les GE
        "longitude":"number",
        "latitude":"number",
    },
-   Date:Date,
+   "Date":Date,
    "sellerName":"string",
    "sellerFirstName?":"string",
    "reference":"string",
