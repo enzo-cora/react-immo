@@ -21,7 +21,7 @@ const Header : FunctionComponent<state> = ({authLogout,auth,...rest})=> {
     }
 
     return (
-        <header className={css.menuHeader} >
+        <header  className={css.menuHeader} >
             <p>Transactimo</p>
             {auth.isAuth && auth.user.isAdmin &&
             <button><Link className={css.Link} to='/admin'>Admin</Link></button>}

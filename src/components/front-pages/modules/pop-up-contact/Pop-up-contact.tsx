@@ -1,8 +1,9 @@
 import React from 'react';
 
+
 const PopUpContact = ()=> {
     return (
-        <p>Pop up contact</p>
+        <p className="yellow">Pop up contact</p>
     );
 }
 
