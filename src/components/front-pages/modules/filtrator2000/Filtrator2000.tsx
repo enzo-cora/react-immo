@@ -35,7 +35,7 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
     const kitchenData = [1,2,3]
 
     const formRef = useRef(null)
-    
+
     function handleChange () {
 
         let form : any = formRef.current
@@ -46,7 +46,8 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
             let options = elem.options
             for(let opt of options) {
                 if(opt.selected){
-                    result.push(opt.value)
+                    /\d+/.test(opt.value ) ? result.push(+opt.value) :
+                      result.push(opt.value)
                 }
             }
             return result;
@@ -76,12 +77,14 @@ const Filtrator2000 : FunctionComponent<state> = ({saveFilters,fetchByFilters,st
                         filters.price[1] = +elem.value
                         break;
                     default:
-                        elem.tagName === 'SELECT'? filters[elem.name] = getSelectedValues(elem) :
-                            filters[elem.name] = elem.value
+                        elem.tagName === 'SELECT' ?
+                          filters[elem.name] = getSelectedValues(elem) :
+                          filters[elem.name] = elem.value
                         break;
                 }
             }
         }
+        console.log('les filtres',filters)
         saveFilters(filters)
         fetchByFilters()
     }
